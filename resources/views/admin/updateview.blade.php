@@ -31,17 +31,17 @@
                 <h1>Update Menu</h1>
                 <div>
                     <label style="padding: 15px;">Title</label>
-                    <input style="color:blue;" type="text" name="title" value="{{$data->title}}" required>
+                    <input style="color:black;" type="text" name="title" value="{{$data->title}}" required>
                 </div>
 
                 <div>
                     <label style="padding: 15px;">Price</label>
-                    <input style="color:blue;" type="num" name="Price" value="{{$data->Price}}" required>
+                    <input style="color:black;" type="num" name="Price" value="{{$data->Price}}" required>
                 </div>
 
                 <div>
                     <label style="padding: 15px;">Description</label>
-                    <input style="color:blue;" type="text" name="description" value="{{$data->description}}" required>
+                    <input style="color:black;" type="text" name="description" value="{{$data->description}}" required>
                 </div>
 
                 <div>

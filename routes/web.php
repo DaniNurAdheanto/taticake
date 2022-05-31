@@ -35,11 +35,18 @@ Route::get("/deletechef/{id}", [AdminController::class, "deletechef"]);
 Route::post("/addcart/{id}", [HomeController::class, "addcart"]);
 Route::get("/showcart/{id}", [HomeController::class, "showcart"]);
 Route::get("/myorders/{id}", [HomeController::class, "myorders"]);
+Route::get("/payment/{id}", [HomeController::class, "payment"]);
 Route::get("/remove/{id}", [HomeController::class, "remove"]);
 Route::post("/orderconfirm", [HomeController::class, "orderconfirm"]);
 Route::get("/orders", [AdminController::class, "orders"]);
 Route::get("/search", [AdminController::class, "search"]);
 Route::get("/cetaklaporan", [AdminController::class, "cetaklaporan"]);
+Route::get("/statusorders", [AdminController::class, "statusorders"]);
+Route::get("/waitingforpayment/{id}", [AdminController::class, "waitingforpayment"]);
+Route::get("/inproses/{id}", [AdminController::class, "inproses"]);
+Route::get("/delivery/{id}", [AdminController::class, "delivery"]);
+Route::get("/done/{id}", [AdminController::class, "done"]);
+Route::get("/deletereservation/{id}", [AdminController::class, "deletereservation"]);
 Route::get("/redirects", [HomeController::class, "redirects"]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

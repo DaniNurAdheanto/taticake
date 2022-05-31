@@ -10,6 +10,7 @@ use App\Models\Foodchef;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class AdminController extends Controller
 {
@@ -80,11 +81,15 @@ class AdminController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->phone = $request->phone;
-        $data->guest = $request->guest;
+        $data->address = $request->address;
         $data->date = $request->date;
-        $data->time = $request->time;
+        $image = $request->image;
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->image->move('payment_confirmation', $imagename);
+        $data->image = $imagename;
         $data->message = $request->message;
         $data->save();
+        Alert::success('Konfirmasi Pembayaran Berhasil', 'Mohon Tunggu Hingga Barang Sampe Di Rumah Anda');
         return redirect()->back();
     }
 
@@ -96,6 +101,12 @@ class AdminController extends Controller
         } else {
             return redirect('login');
         }
+    }
+    public function deletereservation($id)
+    {
+        $data = reservation::find($id);
+        $data->delete();
+        return redirect()->back();
     }
 
     public function viewchef()
@@ -164,5 +175,43 @@ class AdminController extends Controller
     {
         $data = order::all();
         return view('admin.cetaklaporan', compact('data'));
+    }
+
+    public function statusorders()
+    {
+        $data = order::all();
+        return view('admin.statusorders', compact('data'));
+    }
+
+    public function waitingforpayment($id)
+    {
+        $data = order::find($id);
+        $data->status = 'Waiting For Payment';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function inproses($id)
+    {
+        $data = order::find($id);
+        $data->status = 'In Proses';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function delivery($id)
+    {
+        $data = order::find($id);
+        $data->status = 'Delivery';
+        $data->save();
+        return redirect()->back();
+    }
+
+    public function done($id)
+    {
+        $data = order::find($id);
+        $data->status = 'Done';
+        $data->save();
+        return redirect()->back();
     }
 }

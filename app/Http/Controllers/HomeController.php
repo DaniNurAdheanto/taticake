@@ -90,6 +90,8 @@ class HomeController extends Controller
             $data->name = $request->name;
             $data->phone = $request->phone;
             $data->address = $request->address;
+            $data->user_id = Auth::user()->id;
+            Alert::success('Barang Berhasil DiCheckout', 'Silakan Selesaikan Pembayaran');
             $data->save();
         }
         return redirect()->back();
@@ -97,8 +99,22 @@ class HomeController extends Controller
 
     public function myorders(Request $request, $id)
     {
-        $data = user::all();
-        $count = cart::where('user_id', $id)->count();
-        return view("myorders", compact('count', 'data'));
+        if (Auth::id() == $id) {
+            $userid = Auth::user()->id;
+            $order = order::where('user_id', $userid)->get();
+            return view('myorders', compact('order'));
+        } else {
+            return redirect()->back();
+        }
+    }
+    public function payment(Request $request, $id)
+    {
+        if (Auth::id() == $id) {
+            $userid = Auth::user()->id;
+            $order = order::where('user_id', $userid)->get();
+            return view('payment', compact('order', 'userid'));
+        } else {
+            return redirect('payment');
+        }
     }
 }

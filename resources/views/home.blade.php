@@ -3,7 +3,6 @@
 
 <head>
     <base href="/public">
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -157,7 +156,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h4>Tati Cake</h4>
                             <h6>THE BEST EXPERIENCE</h6>
                             <div class="main-white-button scroll-to-section">
-                                <a href="#reservation">Make A Reservation</a>
+                                <a href="#menu">MENU</a>
                             </div>
                         </div>
                     </div>
@@ -204,7 +203,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <h6>About Us</h6>
                             <h2>We Leave A Delicious Memory For You</h2>
                         </div>
-                        <p>Klassy Cafe is one of the best <a href="https://templatemo.com/tag/restaurant" target="_blank" rel="sponsored">restaurant HTML templates</a> with Bootstrap v4.5.2 CSS framework. You can download and feel free to use this website template layout for your restaurant business. You are allowed to use this template for commercial purposes. <br><br>You are NOT allowed to redistribute the template ZIP file on any template donwnload website. Please contact us for more information.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam obcaecati, eum sunt nemo, labore possimus nesciunt magnam tenetur cumque libero suscipit iusto corrupti. Dolorum sequi, beatae a accusantium nisi voluptates rerum voluptatem numquam, debitis, ipsam culpa perspiciatis iste. Delectus possimus sit voluptate eligendi incidunt ad totam quis, voluptatem fuga repellat.</p>
                         <div class="row">
                             <div class="col-4">
                                 <img src="assets/images/about-thumb-01.jpg" alt="">
@@ -221,7 +220,7 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
                         <div class="thumb">
-                            <a rel="nofollow" href="http://youtube.com"><i class="fa fa-play"></i></a>
+                            <!-- <a rel="nofollow" href="http://youtube.com"></a> -->
                             <img src="assets/images/about-video-bg.jpg" alt="">
                         </div>
                     </div>

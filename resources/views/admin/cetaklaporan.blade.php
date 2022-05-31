@@ -31,6 +31,7 @@
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total Price</th>
+                <th>Date</th>
             </tr>
 
             @foreach($data as $data)
@@ -43,6 +44,7 @@
                 <td>{{$data->price}}K</td>
                 <td>{{$data->quantity}}</td>
                 <td>{{$data->price * $data->quantity}}K</td>
+                <td>{{$data->created_at}}</td>
             </tr>
             @endforeach
         </table>

@@ -19,26 +19,24 @@
             @csrf
             <h1>Upload Chefs</h1>
             <div>
-                <label>Name</label>
+                <label style="padding: 10px;">Name</label>
                 <input style="color: blue;" type="text" name="name" required="" placeholder="Enter Name">
             </div>
-
             <div>
-                <label>Speciality</label>
+                <label style="padding: 10px;">Speciality</label>
                 <input style="color: blue;" type="text" name="speciality" required="" placeholder="Enter The Speciality">
             </div>
 
             <div>
                 <input type="file" name="image" required="">
             </div>
-
             <div>
                 <input style="color: blue;" type="submit" value="save">
             </div>
         </form>
 
         <div>
-            <table bgcolor="black">
+            <table class="table" style="color:white;">
                 <tr>
                     <th style="padding:20px;">Chef Name</th>
                     <th style="padding: 30px;">Speciality</th>

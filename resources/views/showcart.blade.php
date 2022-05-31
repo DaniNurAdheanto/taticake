@@ -61,6 +61,11 @@ https://templatemo.com/tm-558-klassy-cafe
                         <a href="{{url('/redirects')}}" class="logo">
                             <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
                         </a>
+
+                        <a class="menu-trigger">
+
+                            <span>Menu</span>
+                        </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
@@ -94,7 +99,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart',Auth::user()->id)}}" class="active">
-                                    Cart{{$count}}
+                                    Cart {{$count}}
                                 </a>
                                 @endauth
                                 @guest
@@ -106,7 +111,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/myorders',Auth::user()->id)}}">
-                                    MyOrders {{$count}}
+                                    MyOrders
                                 </a>
                                 @endauth
                                 @guest
@@ -148,83 +153,95 @@ https://templatemo.com/tm-558-klassy-cafe
 
 
     <div id="top">
-        <table align="center" bgcolor='white'>
-            <tr>
-                <th style="padding: 30px;">Food Name</th>
-                <th style="padding: 30px;">Price</th>
-                <th style="padding: 30px;">Quantity</th>
-                <th style="padding: 30px;">Action</th>
-            </tr>
-
-
-            <form action="{{url('orderconfirm')}}" method="POST">
-                @csrf
-                @foreach($data as $data)
-
-                <tr align="center">
-                    <td>
-                        <input type="text" name="foodname[]" value="{{$data->title}}" hidden="">
-                        {{$data->title}}
-                    </td>
-
-                    <td>
-                        <input type="text" name="price[]" value="{{$data->Price}}" hidden="">
-                        {{$data->Price}}K
-                    </td>
-
-                    <td>
-                        <input type="text" name="quantity[]" value="{{$data->quantity}}" hidden="">
-                        {{$data->quantity}}
-                    </td>
+        <div class="container">
+            <table align="center" bgcolor='white'>
+                <tr>
+                    <th style="padding: 30px;">No</th>
+                    <th style="padding: 30px;">Food Name</th>
+                    <th style="padding: 30px;">Price</th>
+                    <th style="padding: 30px;">Quantity</th>
+                    <!-- <th style="padding: 30px;">total_price</th> -->
+                    <th style="padding: 30px;">Action</th>
                 </tr>
 
 
-                @endforeach
+                <form action="{{url('orderconfirm')}}" method="POST">
 
-                @foreach($data2 as $data2)
-                <tr style="position: relative; top:-90px; right: -380px;">
-                    <td>
-                        <a href="{{url('/remove',$data2->id)}}" class="btn btn-danger" style="font-size: 12px;" onclick="return confirm('Yakin Barang DiHapus')">Remove</a>
-                    </td>
-                </tr>
-                @endforeach
+                    @csrf
+                    <?php $totalprice = 0; ?>
+                    @foreach($data as $data)
 
-                <tr align="center">
-                    <td>Sub Price</td>
-                    <td><input type="text" name="price[]" value="{{$data->Price}}" hidden="">
-                        {{number_format ($data->Price )}}K
-                    </td>
-                </tr>
-        </table>
-        <br>
-        <div align="center" style="padding: 10px;">
-            <button type="button" class="btn btn-outline-primary" id="order">Order Now</button>
+                    <tr align="center">
+                        <td>
+                            <input type="text" name="No" value="" hidden="">
+                            {{$loop->iteration}}
+                        </td>
+                        <td>
+                            <input type="text" name="foodname[]" value="{{$data->title}}" hidden="">
+                            {{$data->title}}
+                        </td>
+
+                        <td>
+                            <input type="text" name="price[]" value="{{$data->Price}}" hidden="">
+                            {{$data->Price * $data->quantity}}K
+                        </td>
+
+                        <td>
+                            <input type="text" name="quantity[]" value="{{$data->quantity}}" hidden="">
+                            {{$data->quantity}}
+                        </td>
+
+                        <!-- <td>
+                        <a href="{{url('/remove',$data->id)}}" class="btn btn-danger" style="font-size: 12px;" onclick="return confirm('Yakin Barang DiHapus')">Remove</a>
+                    </td> -->
+                    </tr>
+
+                    <?php $totalprice += ($data->Price * $data->quantity) ?>
+                    @endforeach
+
+                    @foreach($data2 as $data2)
+                    <tr style="position: relative; top:-90px; right: -460px;">
+                        <td>
+                            <a href="{{url('/remove',$data2->id)}}" class="btn btn-danger" style="font-size: 12px;" onclick="return confirm('Yakin Barang DiHapus')">Remove</a>
+                        </td>
+                    </tr>
+
+                    @endforeach
+
+            </table>
+
+            <h1 style="text-align: center ;">Total Price : {{$totalprice}} K</h1>
+            <br>
+            <div align="center" style="padding: 10px;">
+                <button type="button" class="btn btn-outline-primary" id="order">Order Now</button>
+            </div>
+
+            <div id="appear" align="center" style="padding: 10px; display:none;">
+                <div style="padding: 10px;">
+                    <label>Name</label>
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+
+                <div style="padding: 10px;">
+                    <label>Phone</label>
+                    <input type="number" name="phone" placeholder="Phone Number">
+                </div>
+
+                <div style="padding: 10px;">
+                    <label>Address</label>
+                    <input type="text" name="address" placeholder="Address">
+                </div>
+
+                <div style="padding: 10px;">
+                    <!-- <a href="{{url('/payment',Auth::user()->id)}}" class="btn btn-danger" type="submit" value="Order Confirm" style="font-size: 12px;">Payment</a> -->
+                    <a href="{{ url('payment' , Auth::user()->id) }}" class="btn btn-outline-primary" type="submit" value="Order Confirm">Order Confirm</a>
+                    <input class="btn btn-outline-success" type="submit" value="Order Confirm"></input>
+                    <button type="button" id="close" class="btn btn-outline-danger">Close</button>
+                </div>
+            </div>
+            </form>
 
         </div>
-
-        <div id="appear" align="center" style="padding: 10px; display:none;">
-            <div style="padding: 10px;">
-                <label>Name</label>
-                <input type="text" name="name" placeholder="Name">
-            </div>
-
-            <div style="padding: 10px;">
-                <label>Phone</label>
-                <input type="number" name="phone" placeholder="Phone Number">
-            </div>
-
-            <div style="padding: 10px;">
-                <label>Address</label>
-                <input type="text" name="address" placeholder="Address">
-            </div>
-
-            <div style="padding: 10px;">
-                <input class="btn btn-outline-success" type="submit" value="Order Confirm">
-                <button type="button" id="close" class="btn btn-outline-danger">Close</button>
-            </div>
-        </div>
-        </form>
-
     </div>
     <script type="text/javascript">
         $("#order").click(

@@ -1,3 +1,4 @@
+@include('sweetalert::alert')
 <base href="/public">
 <section class="section" id="reservation">
     <div class="container">
@@ -29,11 +30,11 @@
             </div>
             <div class="col-lg-6">
                 <div class="contact-form">
-                    <form id="contact" action="{{url('reservation')}}" method="post">
+                    <form id="contact" action="{{url('reservation')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-12">
-                                <h4>Table Reservation</h4>
+                                <h4>Payment confirmation</h4>
                             </div>
                             <div class="col-lg-6 col-sm-12">
                                 <fieldset>
@@ -51,12 +52,12 @@
                                 </fieldset>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <input type="number" name="guest" placeholder="Number of Guest">
+                                <input type="text" name="address" placeholder="Address">
                             </div>
                             <div class="col-lg-6">
                                 <div id="filterDate2">
                                     <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                        <input name="date" id="date" type="text" class="form-control" placeholder="dd/mm/yyyy">
+                                        <input name="date" id="date" type="text" class="form-control" placeholder="Tanggal Pembelian">
                                         <div class="input-group-addon">
                                             <span class="glyphicon glyphicon-th"></span>
                                         </div>
@@ -64,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
-                                <input type="time" name="time">
+                                <input type="file" name="image">
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>

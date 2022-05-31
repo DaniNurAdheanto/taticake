@@ -29,6 +29,7 @@ https://templatemo.com/tm-558-klassy-cafe
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
 
     <link rel="stylesheet" href="assets/css/lightbox.css">
+    <script src="https://kit.fontawesome.com/f048f380da.js" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -56,6 +57,11 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo Start ***** -->
                         <a href="{{url('/redirects')}}" class="logo">
                             <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                        </a>
+
+                        <a class="menu-trigger">
+
+                            <span>Menu</span>
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
@@ -90,7 +96,7 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart',Auth::user()->id)}}">
-                                    Cart{{$count}}
+                                    Cart
                                 </a>
                                 @endauth
                                 @guest
@@ -145,16 +151,62 @@ https://templatemo.com/tm-558-klassy-cafe
 
 
     <div id="top">
-        <h5 align="center">Halaman My orders</h5>
-        <table align="center" bgcolor='white'>
-            <tr>
-                <th style="padding: 30px;">No</th>
-                <th style="padding: 30px;">Food Name</th>
-                <th style="padding: 30px;">Price</th>
-                <th style="padding: 30px;">Quantity</th>
-                <th style="padding: 30px;">Status</th>
-            </tr>
-        </table>
+        <div style="width: auto;" class="container">
+            <h1 align="center" style="font-size: 20px;">Halaman Orders</h1>
+            <?php $totalprice = 0; ?>
+            <br>
+
+            <table class="table" align="center" bgcolor='white'>
+                <tr align="center">
+                    <th>No</th>
+                    <th>Food Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+                @csrf
+                <?php $totalprice = 0; ?>
+                @foreach($order as $orders)
+
+                <tr align="center">
+                    <td>
+                        <input type="text" name="No" value="" hidden="">
+                        {{$loop->iteration}}
+                    </td>
+                    <td>
+                        <input type="text" name="foodname[]" value="{{$orders->foodname}}" hidden="">
+                        {{$orders->foodname}}
+                    </td>
+
+                    <td>
+                        <input type="text" name="price[]" value="{{$orders->price}}" hidden="">
+                        {{$orders->price * $orders->quantity}}K
+                    </td>
+
+                    <td>
+                        <input type="text" name="quantity[]" value="{{$orders->quantity}}" hidden="">
+                        {{$orders->quantity}}
+                    </td>
+
+                    <td>
+                        <input type="text" name="quantity[]" value="{{$orders->status}}" hidden="">
+                        {{$orders->status}}
+                    </td>
+                </tr>
+
+                <?php $totalprice += ($orders->price * $orders->quantity) ?>
+                @endforeach
+
+            </table>
+            <br>
+            <br>
+            <h1 style="text-align: center ;">Total Price : {{$totalprice}} K</h1>
+
+            <div align="center" style="padding: 10px;">
+                <a href="{{ url('payment' , Auth::user()->id) }}" class="btn btn-outline-primary">Payment</a>
+            </div>
+
+        </div>
     </div>
 
     <!-- jQuery -->
