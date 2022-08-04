@@ -33,20 +33,20 @@
 
             <h1>Upload Menu</h1>
             <div>
-                <label style="padding: 10px;">Title</label>
-                <input style="color:black;" type="text" name="title" placeholder="Write Title" required>
+                <label style="padding: 10px;">Nama Menu</label>
+                <input style="color:black;" type="text" name="title" placeholder="Nama Menu*" required>
             </div>
             <div>
-                <label style="padding: 10px;">Price</label>
-                <input style="color:black;" type="num" name="Price" placeholder="Write Price" required>
+                <label style="padding: 10px;">Harga</label>
+                <input style="color:black;" type="num" name="Price" placeholder=" Harga*" required>
             </div>
             <div>
-                <label style="padding: 10px;">Image</label>
+                <label style="padding: 10px;">Gambar</label>
                 <input type="file" name="image" required>
             </div>
             <div>
-                <label style="padding: 10px;">Description</label>
-                <input style="color:black;" type="text" name="description" placeholder="Description" required>
+                <label style="padding: 10px;">Deskripsi</label>
+                <input style="color:black;" type="text" name="description" placeholder="Deskripsi*" required>
             </div>
             <div>
                 <input style="color: blue; padding: 10px;" type="Submit" value="Save">
@@ -54,26 +54,26 @@
         </form>
 
         <div>
-            <table class="table" style="color:white;">
+            <table class="table" style="color:white; width: auto; margin:0 auto;">
                 <tr>
                     <th>No</th>
-                    <th style="padding: 30px;">Food Name</th>
-                    <th style="padding: 30px;">Price</th>
-                    <th style="padding: 30px;">Descripsion</th>
-                    <th style="padding: 30px;">Image</th>
-                    <th style="padding: 30px;">Action</th>
-                    <th style="padding: 30px;">Action2</th>
+                    <th style="padding: 30px;">Nama Menu</th>
+                    <th style="padding: 30px;">Harga</th>
+                    <th style="padding: 30px;">Deskripsi</th>
+                    <th style="padding: 30px;">Gambar</th>
+                    <th style="padding: 30px;">Hapus</th>
+                    <th style="padding: 30px;">Ubah</th>
                 </tr>
 
                 @foreach($data as $data)
                 <tr align="center">
                     <td>{{$loop->iteration}}</td>
                     <td>{{$data->title}}</td>
-                    <td>{{$data->Price}}</td>
+                    <td>{{$data->Price}} K</td>
                     <td>{{$data->description}}</td>
-                    <td><img height="50" width="50" src="/foodimage/{{$data->image}}"></td>
-                    <td><a href="{{url('/deletemenu',$data->id)}}" onclick="return confirm('Yakin Barang DiHapus')">Delete</a></td>
-                    <td><a href="{{url('/updateview',$data->id)}}">Update</a></td>
+                    <td><img height="50" width="50" src="{{asset('/storage/menu/'.$data->image)}}"></td>
+                    <td><a href="{{url('/deletemenu',$data->id)}}" onclick="return confirm('Yakin Barang DiHapus')">Hapus</a></td>
+                    <td><a href="{{url('/updateview',$data->id)}}">Ubah</a></td>
                 </tr>
                 @endforeach
             </table>

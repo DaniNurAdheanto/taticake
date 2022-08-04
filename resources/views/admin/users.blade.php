@@ -28,7 +28,7 @@
             @include("admin.navbar")
 
             <div style="position: relative; top: 60px; margin:0 auto;">
-                <h1 style="color :aliceblue; text-align: center;">Infomasi User</h1>
+                <h1 style="color :aliceblue; text-align: center;">Infomasi Pengguna</h1>
 
                 @if(session()->has('message1'))
                 <div class="alert alert-danger">
@@ -39,7 +39,7 @@
                 <table class="table" style="color :white;">
                     <tr>
                         <th style="padding: 50px;">No </th>
-                        <th style="padding: 50px;">Name </th>
+                        <th style="padding: 50px;">Nama </th>
                         <th style="padding: 50px;">Email</th>
                         <th style="padding: 50px;">Action</th>
                     </tr>

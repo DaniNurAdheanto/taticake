@@ -9,6 +9,9 @@ use App\Models\Food;
 use App\Models\Foodchef;
 use App\Models\Cart;
 use App\Models\Order;
+use phpDocumentor\Reflection\PseudoTypes\False_;
+use phpDocumentor\Reflection\Types\Null_;
+use phpDocumentor\Reflection\Types\Nullable;
 use PhpParser\Node\Stmt\Return_;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -32,9 +35,20 @@ class HomeController extends Controller
         $usertype = Auth::user()->usertype;
 
         if ($usertype == '1') {
-            return view('admin.adminhome');
-        } else {
 
+            $total_menu = food::all()->count();
+            $total_user = user::all()->count();
+            $total_orders = order::all()->count();
+            $order = order::all();
+            $total_income = 0;
+            foreach ($order as $order) {
+                $total_income = $total_income + $order->price;
+            }
+            $total_inproses = Order::where('status', '=', 'Proses')->get()->count();
+            $total_done = Order::where('status', '=', 'Selesai')->get()->count();
+
+            return view('admin.adminhome', compact('total_menu', 'total_user', 'total_orders', 'total_income', 'total_inproses', 'total_done'));
+        } else {
             $user_id = Auth::id();
             $count = cart::where('user_id', $user_id)->count();
             return view('home', compact('data', 'data2', 'count'));
@@ -82,6 +96,11 @@ class HomeController extends Controller
 
     public function orderconfirm(Request $request)
     {
+        $validatedata = $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required',
+            'address' => 'required',
+        ]);
         foreach ($request->foodname as $key => $foodname) {
             $data = new order;
             $data->foodname = $foodname;
@@ -90,8 +109,9 @@ class HomeController extends Controller
             $data->name = $request->name;
             $data->phone = $request->phone;
             $data->address = $request->address;
+            $data->status = 'Menunggu Pembayaran';
             $data->user_id = Auth::user()->id;
-            Alert::success('Barang Berhasil DiCheckout', 'Silakan Selesaikan Pembayaran');
+            Alert::success('Barang Berhasil DiCheckout', 'Silakan Selesaikan Pembayaran Di Halaman Pesanan');
             $data->save();
         }
         return redirect()->back();
@@ -111,8 +131,8 @@ class HomeController extends Controller
     {
         if (Auth::id() == $id) {
             $userid = Auth::user()->id;
-            $order = order::where('user_id', $userid)->get();
-            return view('payment', compact('order', 'userid'));
+            $order = order::where('user_id', $userid)->where('status', '!=', 'Selesai')->where('status', '!=', 'Pengiriman')->where('status', '!=', 'Proses')->get();
+            return view('payment', compact('order', 'userid',));
         } else {
             return redirect('payment');
         }

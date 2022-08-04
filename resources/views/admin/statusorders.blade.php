@@ -16,19 +16,19 @@
         @include("admin.navbar")
 
         <div class="container">
-            <h1 style="text-align: center; padding-bottom:10px;">Status Orders Customer </h1>
+            <h1 style="text-align: center; margin-top:30px;">Status Pesanan Customer </h1>
 
             <br>
-            <table class="table" style="color:white;" align="center">
+            <table class="table" style="color:white; width: auto; margin:0 auto;">
                 <tr align="center">
                     <td style="padding: 20px;">No</td>
-                    <td style="padding: 30px;">Name</td>
-                    <td style="padding: 30px;">Phone</td>
-                    <td style="padding: 20px;">Address</td>
-                    <td style="padding: 20px;">Food Name</td>
-                    <td style="padding: 20px;">Price</td>
-                    <td style="padding: 20px;">Quantity</td>
-                    <td style="padding: 20px;">Total Price</td>
+                    <td style="padding: 30px;">Nama</td>
+                    <td style="padding: 30px;">No Telpon</td>
+                    <td style="padding: 20px;">Alamat</td>
+                    <td style="padding: 20px;">Nama Menu</td>
+                    <td style="padding: 20px;">Harga</td>
+                    <td style="padding: 20px;">Jumlah</td>
+                    <td style="padding: 20px;">Total Harga</td>
                     <td style="padding: 20px;">Status</td>
                     <td style="padding: 30px;">Button</td>
                 </tr>
@@ -47,14 +47,14 @@
                     <td>
                         <div class="dropdown">
                             <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                                Status Orders
+                                Ubah Status
                             </a>
 
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <li><a style="color: green;" class=" dropdown-item" href="{{url('waitingforpayment',$data->id)}}">Waiting For Payment</a></li>
-                                <li><a style="color: red;" class="dropdown-item" href="{{url('inproses',$data->id)}}">In Proses</a></li>
-                                <li><a style="color: blue;" class="dropdown-item" href="{{url('delivery',$data->id)}}">Delivery</a></li>
-                                <li><a style="color: Yellow;" class="dropdown-item" href="{{url('done',$data->id)}}">Done</a></li>
+                                <li><a style="color: green;" class=" dropdown-item" href="{{url('waitingforpayment',$data->id)}}">Menunggu Pembayaran</a></li>
+                                <li><a style="color: red;" class="dropdown-item" href="{{url('inproses',$data->id)}}">Proses</a></li>
+                                <li><a style="color: blue;" class="dropdown-item" href="{{url('delivery',$data->id)}}">Pengiriman</a></li>
+                                <li><a style="color: Yellow;" class="dropdown-item" href="{{url('done',$data->id)}}">Selesai</a></li>
                             </ul>
                         </div>
                     </td>

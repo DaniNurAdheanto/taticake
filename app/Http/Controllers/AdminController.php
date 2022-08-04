@@ -24,7 +24,7 @@ class AdminController extends Controller
     {
         $data = user::find($id);
         $data->delete();
-        return redirect()->back()->with('message1', 'User Berhasil DiHapus');
+        return redirect()->back()->with('message1', 'Pengguna Berhasil DiHapus');
     }
 
     public function deletemenu($id)
@@ -50,8 +50,9 @@ class AdminController extends Controller
     {
         $data = food::find($id);
         $image = $request->image;
+        $request->file('image')->store('menu');
         $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('foodimage', $imagename);
+        $image->move(public_path('storage/menu'), $imagename);
         $data->image = $imagename;
         $data->title = $request->title;
         $data->Price = $request->Price;
@@ -65,8 +66,9 @@ class AdminController extends Controller
     {
         $data = new food;
         $image = $request->image;
+        $request->file('image')->store('menu');
         $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('foodimage', $imagename);
+        $image->move(public_path('storage/menu'), $imagename);
         $data->image = $imagename;
         $data->title = $request->title;
         $data->Price = $request->Price;
@@ -75,7 +77,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Menu Berhasil DiTambah');
     }
 
-    public function reservation(Request $request)
+    public function konfirmasipayment(Request $request)
     {
         $data = new reservation();
         $data->name = $request->name;
@@ -84,8 +86,9 @@ class AdminController extends Controller
         $data->address = $request->address;
         $data->date = $request->date;
         $image = $request->image;
-        $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('payment_confirmation', $imagename);
+        $request->file('image')->store('konfirmasi-pembayaran');
+        $imagename = date('Ymdtime') . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('storage/konfirmasi-pembayaran'), $imagename);
         $data->image = $imagename;
         $data->message = $request->message;
         $data->save();
@@ -93,20 +96,20 @@ class AdminController extends Controller
         return redirect()->back();
     }
 
-    public function viewreservation()
+    public function viewkonfirmasipayment()
     {
         if (Auth::id()) {
             $data = reservation::all();
-            return view("admin.adminreservation", compact("data"));
+            return view("admin.adminkonfirmasipayment", compact("data"));
         } else {
             return redirect('login');
         }
     }
-    public function deletereservation($id)
+    public function deletekonfirmasipayment($id)
     {
         $data = reservation::find($id);
         $data->delete();
-        return redirect()->back();
+        return redirect()->back()->with('message', 'Konfirmasi Pembayaran Berhasil DiHapus');
     }
 
     public function viewchef()
@@ -119,11 +122,12 @@ class AdminController extends Controller
     {
         $data = new foodchef;
         $image = $request->image;
+        $request->file('image')->store('pembuat');
         $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('chefimage', $imagename);
+        $image->move(public_path('storage/pembuat'), $imagename);
         $data->image = $imagename;
         $data->name = $request->name;
-        $data->speciality = $request->spaciality;
+        $data->speciality = $request->speciality;
         $data->save();
         return redirect()->back();
     }
@@ -139,13 +143,13 @@ class AdminController extends Controller
         $data = foodchef::find($id);
         $image = $request->image;
         if ($image) {
+            $request->file('image')->store('pembuat');
             $imagename = time() . '.' . $image->getClientOriginalExtension();
-            $request->image->move('chefimage', $imagename);
+            $image->move(public_path('storage/pembuat'), $imagename);
             $data->image = $imagename;
         }
-
         $data->name = $request->name;
-        $data->speciality = $request->spaciality;
+        $data->speciality = $request->speciality;
         $data->save();
         return redirect()->back();
     }
@@ -161,6 +165,13 @@ class AdminController extends Controller
     {
         $data = order::all();
         return view('admin.orders', compact('data'));
+    }
+
+    public function deleteorders($id)
+    {
+        $data = order::find($id);
+        $data->delete();
+        return redirect()->back()->with('message', 'Pesanan Berhasil DiHapus');
     }
 
     public function search(Request $request)
@@ -186,7 +197,7 @@ class AdminController extends Controller
     public function waitingforpayment($id)
     {
         $data = order::find($id);
-        $data->status = 'Waiting For Payment';
+        $data->status = 'Menunggu Pembayaran';
         $data->save();
         return redirect()->back();
     }
@@ -194,7 +205,7 @@ class AdminController extends Controller
     public function inproses($id)
     {
         $data = order::find($id);
-        $data->status = 'In Proses';
+        $data->status = 'Proses';
         $data->save();
         return redirect()->back();
     }
@@ -202,7 +213,7 @@ class AdminController extends Controller
     public function delivery($id)
     {
         $data = order::find($id);
-        $data->status = 'Delivery';
+        $data->status = 'Pengiriman';
         $data->save();
         return redirect()->back();
     }
@@ -210,7 +221,7 @@ class AdminController extends Controller
     public function done($id)
     {
         $data = order::find($id);
-        $data->status = 'Done';
+        $data->status = 'Selesai';
         $data->save();
         return redirect()->back();
     }

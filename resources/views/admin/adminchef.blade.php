@@ -17,40 +17,40 @@
 
         <form action="{{url('/uploadchef')}}" method="Post" enctype="multipart/form-data">
             @csrf
-            <h1>Upload Chefs</h1>
+            <h1>Upload Data Pembuat</h1>
             <div>
-                <label style="padding: 10px;">Name</label>
-                <input style="color: blue;" type="text" name="name" required="" placeholder="Enter Name">
+                <label style="padding: 20px;">Nama</label>
+                <input style="color: blue;" type="text" name="name" required="" placeholder="Nama*">
             </div>
             <div>
-                <label style="padding: 10px;">Speciality</label>
-                <input style="color: blue;" type="text" name="speciality" required="" placeholder="Enter The Speciality">
+                <label style="padding: 20px;">Speciality</label>
+                <input style="color: blue;" type="text" name="speciality" required="" placeholder="Speciality*">
             </div>
 
             <div>
-                <input type="file" name="image" required="">
+                <input style="padding: 20px;" type="file" name="image" required="">
             </div>
             <div>
-                <input style="color: blue;" type="submit" value="save">
+                <input style="padding: 20px; color: blue;" type="submit" value="save">
             </div>
         </form>
 
         <div>
-            <table class="table" style="color:white;">
+            <table class="table" style="color:white; width: auto; margin:0 auto;">
                 <tr>
-                    <th style="padding:20px;">Chef Name</th>
-                    <th style="padding: 30px;">Speciality</th>
-                    <th style="padding:20px;">Image</th>
-                    <th style="padding:20px;">Action</th>
-                    <th style="padding:20px;">Action2</th>
+                    <th style="padding:30px;">Nama</th>
+                    <th style="padding:30px;">Speciality</th>
+                    <th style="padding:20px;">Gambar</th>
+                    <th style="padding:20px;">Ubah</th>
+                    <th style="padding:20px;">Hapus</th>
                 </tr>
                 @foreach($data as $data)
                 <tr align="center">
                     <td>{{$data->name}}</td>
                     <td>{{$data->speciality}}</td>
-                    <td><img height="80" width="80" src="/chefimage/{{$data->image}}"></td>
-                    <td><a href="{{url('updatechef',$data->id)}}">Update</a></td>
-                    <td><a href="{{url('deletechef',$data->id)}}">Delete</a></td>
+                    <td><img height="80" width="80" src="{{asset('/storage/pembuat/'.$data->image)}}"></td>
+                    <td><a href="{{url('updatechef',$data->id)}}">Ubah</a></td>
+                    <td><a href="{{url('deletechef',$data->id)}}">Hapus</a></td>
                 </tr>
                 @endforeach
             </table>

@@ -2,32 +2,26 @@
 <html lang="en">
 
 <head>
-    <base href="/public">
+    <!-- <base href="/public"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Tati Cake </title>
-    <!--
-    
-TemplateMo 558 Klassy Cafe
-
-https://templatemo.com/tm-558-klassy-cafe
-
--->
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.css')}}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-klassy-cafe.css')}}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{asset('assets/css/owl-carousel.css')}}">
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="{{asset('assets/css/lightbox.css')}}">
 
 </head>
 
@@ -52,7 +46,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <img style="margin-bottom: 15px;" height="70" width="170" src="/assets/images/logotaticake.png">
 
                             <a class="menu-trigger">
 
@@ -60,56 +54,41 @@ https://templatemo.com/tm-558-klassy-cafe
                             </a>
 
                         </a>
-                        <!-- ***** Logo End ***** -->
-                        <!-- ***** Menu Start ***** -->
+                        <!-- ***** Navbar ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-
-                            <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
+                            <li class="scroll-to-section"><a href="#top" class="active">Beranda</a></li>
+                            <li class="scroll-to-section"><a href="#about">Tentang</a></li>
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="#chefs">Chefs</a></li>
-                            <!-- <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li> -->
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
-
+                            <li class="scroll-to-section"><a href="#pembuat">Pembuat</a></li>
+                            <li class="scroll-to-section"><a href="#reservation">Kontak</a></li>
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart',Auth::user()->id)}}">
-                                    Cart {{$count}}
+                                    <span class="menu-icon">
+                                        <i class="material-icons">shopping_cart</i>
+                                        <span class="badge badge-danger">{{$count}}</span>
+                                    </span>
                                 </a>
                                 @endauth
                                 @guest
-                                Cart
+                                <span class="menu-icon">
+                                    <i class="material-icons">shopping_cart</i>
+                                </span>
                                 @endguest
                                 </a>
                             </li>
-
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/myorders',Auth::user()->id)}}">
-                                    MyOrders
+                                    <span class="menu-icon">
+                                        <i class="material-icons">shopping_bag</i>
+                                    </span>
                                 </a>
                                 @endauth
                                 @guest
-                                MyOrders
+                                <span class="menu-icon">
+                                    <i class="material-icons">shopping_bag</i>
+                                </span>
                                 @endguest
                                 </a>
                             </li>
@@ -164,27 +143,21 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-8">
                     <div class="main-banner header-text">
                         <div class="Modern-Slider">
-                            <!-- Item -->
                             <div class="item">
                                 <div class="img-fill">
-                                    <img src="assets/images/slide-01.jpg" alt="">
+                                    <img src="/assets/images/slidebar3.png" alt="">
                                 </div>
                             </div>
-                            <!-- // Item -->
-                            <!-- Item -->
                             <div class="item">
                                 <div class="img-fill">
-                                    <img src="assets/images/slide-02.jpg" alt="">
+                                    <img src="/assets/images/slidebar2.png" alt="">
                                 </div>
                             </div>
-                            <!-- // Item -->
-                            <!-- Item -->
                             <div class="item">
                                 <div class="img-fill">
-                                    <img src="assets/images/slide-03.jpg" alt="">
+                                    <img src="/assets/images/slidebar4.png" alt="">
                                 </div>
                             </div>
-                            <!-- // Item -->
                         </div>
                     </div>
                 </div>
@@ -200,29 +173,26 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="left-text-content">
                         <div class="section-heading">
-                            <h6>About Us</h6>
-                            <h2>We Leave A Delicious Memory For You</h2>
+                            <h6>Tentang</h6>
+                            <h2>Tati Cake </h2>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam obcaecati, eum sunt nemo, labore possimus nesciunt magnam tenetur cumque libero suscipit iusto corrupti. Dolorum sequi, beatae a accusantium nisi voluptates rerum voluptatem numquam, debitis, ipsam culpa perspiciatis iste. Delectus possimus sit voluptate eligendi incidunt ad totam quis, voluptatem fuga repellat.</p>
+                        <p style="font-size :15px; text-align: justify ">Tati Cake Yang Merupakan Sebuah Usaha Rumahan Yang Melayani Pesanan Dan Pembelian Berbagai Macam Kue Bolu Dan Kue Kering Lebaran Dengan Menggunakan Sistem Pre Order Untuk Metode Pembelian. Pada Saat Ini Toko Tati Cake Masih Mengadaptasi Startegi Pemasaran (WOM) Word Of Mouth Atau Strategi Pemasaran Mulut Ke Mulut.</p>
                         <div class="row">
                             <div class="col-4">
-                                <img src="assets/images/about-thumb-01.jpg" alt="">
+                                <img src="/assets/images/about1.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="assets/images/about-thumb-02.jpg" alt="">
+                                <img src="/assets/images/tengah.png" alt="">
                             </div>
                             <div class="col-4">
-                                <img src="assets/images/about-thumb-03.jpg" alt="">
+                                <img src="/assets/images/about2.png" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-xs-12">
                     <div class="right-content">
-                        <div class="thumb">
-                            <!-- <a rel="nofollow" href="http://youtube.com"></a> -->
-                            <img src="assets/images/about-video-bg.jpg" alt="">
-                        </div>
+                        <img src="assets/images/about5.png" alt="">
                     </div>
                 </div>
             </div>
@@ -232,7 +202,7 @@ https://templatemo.com/tm-558-klassy-cafe
 
     @include("food")
     @include("menu")
-    @include("reservation")
+    @include("konfirmasipayment")
     @include("foodchef")
 
 
@@ -245,21 +215,18 @@ https://templatemo.com/tm-558-klassy-cafe
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
                         <ul class="social-icons">
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://api.whatsapp.com/send?phone=6285156061958"><i class="fa fa-whatsapp"></i></a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a><img src="assets/images/white-logo.png" alt=""></a>
+                        <a><img height="90" width="200" src="/assets/images/logotaticakefooter.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
                     <div class="left-text-content">
-                        <p>© Copyright Klassy Cafe Co.
+                        <p>© Copyright Tati Cake
 
                             <br>Design: TemplateMo
                         </p>
@@ -270,26 +237,26 @@ https://templatemo.com/tm-558-klassy-cafe
     </footer>
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{{asset('assets/js/jquery-2.1.0.min.js')}}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/isotope.js"></script>
+    <script src="{{asset('assets/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('assets/js/accordions.js')}}"></script>
+    <script src="{{asset('assets/js/datepicker.js')}}"></script>
+    <script src="{{asset('assets/js/scrollreveal.min.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/imgfix.min.js')}}"></script>
+    <script src="{{asset('assets/js/slick.js')}}"></script>
+    <script src="{{asset('assets/js/lightbox.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.js')}}"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
     <script>
         $(function() {
             var selectedClass = "";

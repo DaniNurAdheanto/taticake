@@ -8,7 +8,7 @@
 <html lang="en">
 
 <head>
-    <base href="/public">
+    <!-- <base href="/public"> -->
     @include("admin.admincss")
 </head>
 
@@ -19,7 +19,7 @@
             <form action="{{url('/updatefoodchef',$data->id)}}" method="Post" enctype="multipart/form-data">
                 @csrf
                 <div>
-                    <label for="">Chef Name</label>
+                    <label for="">Nama Pembuat</label>
                     <input style="color: blue;" type="text" name="name" value="{{$data->name}}">
                 </div>
 
@@ -29,12 +29,12 @@
                 </div>
 
                 <div>
-                    <label for="">Old Image</label>
-                    <img height="200" width="200" src="/chefimage/{{$data->image}}" alt="">
+                    <label for="">Gambar Lama</label>
+                    <img height="200" width="200" src="{{asset('/storage/pembuat/'.$data->image)}}" alt="">
                 </div>
 
                 <div>
-                    <label for="">New Image</label>
+                    <label for="">Gambar Baru</label>
                     <input type="file" name="image">
                 </div>
 

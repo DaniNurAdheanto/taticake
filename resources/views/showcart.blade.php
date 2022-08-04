@@ -2,16 +2,16 @@
 <html lang="en">
 
 <head>
-    <base href="/public">
-
+    <!-- <base href="/public"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <title>Cart</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Keranjang</title>
     <!--
     
 TemplateMo 558 Klassy Cafe
@@ -20,15 +20,15 @@ https://templatemo.com/tm-558-klassy-cafe
 
 -->
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.css')}}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-klassy-cafe.css')}}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{asset('assets/css/owl-carousel.css')}}">
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="{{asset('assets/css/lightbox.css')}}">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -59,7 +59,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{url('/redirects')}}" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <img style="margin-bottom: 15px;" height="70" width="150" src="/assets/images/logotaticake.png" align="klassy cafe html template">
                         </a>
 
                         <a class="menu-trigger">
@@ -69,70 +69,52 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{{url('/redirects')}}">Home</a></li>
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#about')}}">About</a></li>
-
-                            <!-- 
-                            <li class="submenu">
-                                <a href="javascript:;">Drop Down</a>
-                                <ul>
-                                    <li><a href="#">Drop Down Page 1</a></li>
-                                    <li><a href="#">Drop Down Page 2</a></li>
-                                    <li><a href="#">Drop Down Page 3</a></li>
-                                </ul>
-                            </li>
-                        -->
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#menu')}}">Menu</a></li>
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#chefs')}}">Chefs</a></li>
-                            <!-- <li class="submenu">
-                                <a href="javascript:;">Features</a>
-                                <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
-                                </ul>
-                            </li> -->
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#contact')}}">Contact Us</a></li>
-
+                            <li class="scroll-to-section"><a href="{{url('/redirects')}}">Beranda</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#about')}}">Tentang</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#menu')}}">Menu</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#pembuat')}}">Pembuat</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#contact')}}">Kontak</a></li>
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart',Auth::user()->id)}}" class="active">
-                                    Cart {{$count}}
+                                    <span class="menu-icon">
+                                        <i class="material-icons">shopping_cart</i>
+                                        <span class="badge badge-danger">{{$count}}</span>
+                                    </span>
                                 </a>
                                 @endauth
                                 @guest
-                                Cart[0]
+                                <span class="menu-icon">
+                                    <i class="material-icons">shopping_cart</i>[ {{$count}} ]
+                                </span>
                                 @endguest
                                 </a>
                             </li>
-
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/myorders',Auth::user()->id)}}">
-                                    MyOrders
+                                    <span class="menu-icon">
+                                        <i class="material-icons">shopping_bag</i>
+                                    </span>
                                 </a>
                                 @endauth
                                 @guest
-                                MyOrders
+                                <span class="menu-icon">
+                                    <i class="material-icons">shopping_bag</i>
+                                </span>
                                 @endguest
                                 </a>
                             </li>
-
-
                             <li>
                                 @if (Route::has('login'))
                                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                                     @auth
                             <li>
                                 <x-app-layout>
-
                                 </x-app-layout>
                             </li>
                             @else
                             <li><a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a></li>
-
                             @if (Route::has('register'))
                             <li><a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a></li>
                             @endif
@@ -157,20 +139,15 @@ https://templatemo.com/tm-558-klassy-cafe
             <table align="center" bgcolor='white'>
                 <tr>
                     <th style="padding: 30px;">No</th>
-                    <th style="padding: 30px;">Food Name</th>
-                    <th style="padding: 30px;">Price</th>
-                    <th style="padding: 30px;">Quantity</th>
-                    <!-- <th style="padding: 30px;">total_price</th> -->
+                    <th style="padding: 30px;">Menu</th>
+                    <th style="padding: 30px;">Harga</th>
+                    <th style="padding: 30px;">Jumlah</th>
                     <th style="padding: 30px;">Action</th>
                 </tr>
-
-
                 <form action="{{url('orderconfirm')}}" method="POST">
-
                     @csrf
                     <?php $totalprice = 0; ?>
                     @foreach($data as $data)
-
                     <tr align="center">
                         <td>
                             <input type="text" name="No" value="" hidden="">
@@ -190,51 +167,59 @@ https://templatemo.com/tm-558-klassy-cafe
                             <input type="text" name="quantity[]" value="{{$data->quantity}}" hidden="">
                             {{$data->quantity}}
                         </td>
-
-                        <!-- <td>
-                        <a href="{{url('/remove',$data->id)}}" class="btn btn-danger" style="font-size: 12px;" onclick="return confirm('Yakin Barang DiHapus')">Remove</a>
-                    </td> -->
                     </tr>
 
                     <?php $totalprice += ($data->Price * $data->quantity) ?>
                     @endforeach
 
                     @foreach($data2 as $data2)
-                    <tr style="position: relative; top:-90px; right: -460px;">
+                    <tr style="position: relative; top:-90px; right: -420px;">
                         <td>
-                            <a href="{{url('/remove',$data2->id)}}" class="btn btn-danger" style="font-size: 12px;" onclick="return confirm('Yakin Barang DiHapus')">Remove</a>
+                            <a href="{{url('/remove',$data2->id)}}" class="btn btn-danger" style="font-size: 12px;" onclick="return confirm('Yakin Barang DiHapus')">Hapus</a>
                         </td>
                     </tr>
-
                     @endforeach
 
             </table>
 
-            <h1 style="text-align: center ;">Total Price : {{$totalprice}} K</h1>
+            <h1 style="text-align: center ;">Total Harga : Rp.{{$totalprice}}.000</h1>
             <br>
             <div align="center" style="padding: 10px;">
-                <button type="button" class="btn btn-outline-primary" id="order">Order Now</button>
+                <button type="button" class="btn btn-outline-primary" id="order">Order Sekarang</button>
             </div>
 
             <div id="appear" align="center" style="padding: 10px; display:none;">
-                <div style="padding: 10px;">
-                    <label>Name</label>
-                    <input type="text" name="name" placeholder="Name">
+                <div style="width: 10cm;" class="mb-3" style="padding: 10px;">
+                    <label class="form-label">Nama</label>
+                    <input type="text" class=" @error('name') is-invalid @enderror" name="name" placeholder="Nama" required value="{{old('name')}}">
+                    @error('name')
+                    <div style="color: red;" class="invalid-freedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3" style="padding: 10px;">
+                    <label>No Telpon</label>
+                    <input type="number" class=" @error('name') is-invalid @enderror" name="phone" placeholder="No Telepon" value="{{old('phone')}}">
+                    @error('phone')
+                    <div style="color: red;" class="invalid-freedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3" style="padding: 10px;">
+                    <label>Alamat</label>
+                    <input type="text" class=" @error('name') is-invalid @enderror" name="address" placeholder="Alamat Lengkap" value="{{old('address')}}">
+                    @error('address')
+                    <div style="color: red;" class="invalid-freedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
                 </div>
 
                 <div style="padding: 10px;">
-                    <label>Phone</label>
-                    <input type="number" name="phone" placeholder="Phone Number">
-                </div>
-
-                <div style="padding: 10px;">
-                    <label>Address</label>
-                    <input type="text" name="address" placeholder="Address">
-                </div>
-
-                <div style="padding: 10px;">
-                    <!-- <a href="{{url('/payment',Auth::user()->id)}}" class="btn btn-danger" type="submit" value="Order Confirm" style="font-size: 12px;">Payment</a> -->
-                    <a href="{{ url('payment' , Auth::user()->id) }}" class="btn btn-outline-primary" type="submit" value="Order Confirm">Order Confirm</a>
                     <input class="btn btn-outline-success" type="submit" value="Order Confirm"></input>
                     <button type="button" id="close" class="btn btn-outline-danger">Close</button>
                 </div>
@@ -258,26 +243,26 @@ https://templatemo.com/tm-558-klassy-cafe
     </script>
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{{asset('assets/js/jquery-2.1.0.min.js')}}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/isotope.js"></script>
+    <script src="{{asset('assets/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('assets/js/accordions.js')}}"></script>
+    <script src="{{asset('assets/js/datepicker.js')}}"></script>
+    <script src="{{asset('assets/js/scrollreveal.min.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/imgfix.min.js')}}"></script>
+    <script src="{{asset('assets/js/slick.js')}}"></script>
+    <script src="{{asset('assets/js/lightbox.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.js')}}"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
     <script>
         $(function() {
             var selectedClass = "";

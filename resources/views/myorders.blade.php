@@ -2,33 +2,33 @@
 <html lang="en">
 
 <head>
-    <base href="/public">
+    <!-- <base href="/public"> -->
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>MyOrders</title>
     <!--
     
 TemplateMo 558 Klassy Cafe
 
 https://templatemo.com/tm-558-klassy-cafe
-
 -->
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/font-awesome.css')}}">
 
-    <link rel="stylesheet" href="assets/css/templatemo-klassy-cafe.css">
+    <link rel="stylesheet" href="{{asset('assets/css/templatemo-klassy-cafe.css')}}">
 
-    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="{{asset('assets/css/owl-carousel.css')}}">
 
-    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="{{asset('assets/css/lightbox.css')}}">
     <script src="https://kit.fontawesome.com/f048f380da.js" crossorigin="anonymous"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -56,7 +56,7 @@ https://templatemo.com/tm-558-klassy-cafe
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
                         <a href="{{url('/redirects')}}" class="logo">
-                            <img src="assets/images/klassy-logo.png" align="klassy cafe html template">
+                            <img style="margin-bottom: 15px;" height="90" width="150" src="/assets/images/logotaticake.png" align="klassy cafe html template">
                         </a>
 
                         <a class="menu-trigger">
@@ -66,8 +66,8 @@ https://templatemo.com/tm-558-klassy-cafe
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#home')}}">Home</a></li>
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#about')}}">About</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#home')}}">Beranda</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#about')}}">Tentang</a></li>
 
                             <!-- 
                             <li class="submenu">
@@ -79,8 +79,8 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </ul>
                             </li>
                         -->
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#menu')}}">Menu</a></li>
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#chefs')}}">Chefs</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#menu')}}">Menu</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#pembuat')}}">Pembuat</a></li>
                             <!-- <li class="submenu">
                                 <a href="javascript:;">Features</a>
                                 <ul>
@@ -91,16 +91,20 @@ https://templatemo.com/tm-558-klassy-cafe
                                 </ul>
                             </li> -->
                             <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="{{url('/redirects/#contact')}}">Contact Us</a></li>
+                            <li class="scroll-to-section"><a href="{{url('/#contact')}}">Kontak</a></li>
 
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/showcart',Auth::user()->id)}}">
-                                    Cart
+                                    <span class="menu-icon">
+                                        <i class="material-icons">shopping_cart</i>
+                                    </span>
                                 </a>
                                 @endauth
                                 @guest
-                                Cart[0]
+                                <span class="menu-icon">
+                                    <i class="material-icons">shopping_cart</i>
+                                </span>
                                 @endguest
                                 </a>
                             </li>
@@ -108,11 +112,15 @@ https://templatemo.com/tm-558-klassy-cafe
                             <li class="scroll-to-section">
                                 @auth
                                 <a href="{{url('/myorders',Auth::user()->id)}}" class="active">
-                                    MyOrders
+                                    <span class="menu-icon">
+                                        <i class="material-icons">shopping_bag</i>
+                                    </span>
                                 </a>
                                 @endauth
                                 @guest
-                                MyOrders
+                                <span class="menu-icon">
+                                    <i class="material-icons">shopping_bag</i>
+                                </span>
                                 @endguest
                                 </a>
                             </li>
@@ -152,22 +160,21 @@ https://templatemo.com/tm-558-klassy-cafe
 
     <div id="top">
         <div style="width: auto;" class="container">
-            <h1 align="center" style="font-size: 20px;">Halaman Orders</h1>
+            <h1 align="center" style="font-size: 20px;">Halaman Pesanan</h1>
             <?php $totalprice = 0; ?>
             <br>
 
             <table class="table" align="center" bgcolor='white'>
                 <tr align="center">
                     <th>No</th>
-                    <th>Food Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Menu</th>
+                    <th>Harga</th>
+                    <th>Jumlah</th>
                     <th>Status</th>
                 </tr>
                 @csrf
                 <?php $totalprice = 0; ?>
                 @foreach($order as $orders)
-
                 <tr align="center">
                     <td>
                         <input type="text" name="No" value="" hidden="">
@@ -193,43 +200,38 @@ https://templatemo.com/tm-558-klassy-cafe
                         {{$orders->status}}
                     </td>
                 </tr>
-
-                <?php $totalprice += ($orders->price * $orders->quantity) ?>
+                <!-- <?php $totalprice += ($orders->price * $orders->quantity) ?> -->
                 @endforeach
-
             </table>
             <br>
             <br>
-            <h1 style="text-align: center ;">Total Price : {{$totalprice}} K</h1>
-
             <div align="center" style="padding: 10px;">
-                <a href="{{ url('payment' , Auth::user()->id) }}" class="btn btn-outline-primary">Payment</a>
+                <a href="{{ url('payment' , Auth::user()->id) }}" class="btn btn-outline-primary">Bayar</a>
             </div>
-
         </div>
     </div>
 
     <!-- jQuery -->
-    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="{{asset('assets/js/jquery-2.1.0.min.js')}}"></script>
 
     <!-- Bootstrap -->
-    <script src="assets/js/popper.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets/js/popper.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
 
     <!-- Plugins -->
-    <script src="assets/js/owl-carousel.js"></script>
-    <script src="assets/js/accordions.js"></script>
-    <script src="assets/js/datepicker.js"></script>
-    <script src="assets/js/scrollreveal.min.js"></script>
-    <script src="assets/js/waypoints.min.js"></script>
-    <script src="assets/js/jquery.counterup.min.js"></script>
-    <script src="assets/js/imgfix.min.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/lightbox.js"></script>
-    <script src="assets/js/isotope.js"></script>
+    <script src="{{asset('assets/js/owl-carousel.js')}}"></script>
+    <script src="{{asset('assets/js/accordions.js')}}"></script>
+    <script src="{{asset('assets/js/datepicker.js')}}"></script>
+    <script src="{{asset('assets/js/scrollreveal.min.js')}}"></script>
+    <script src="{{asset('assets/js/waypoints.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.counterup.min.js')}}"></script>
+    <script src="{{asset('assets/js/imgfix.min.js')}}"></script>
+    <script src="{{asset('assets/js/slick.js')}}"></script>
+    <script src="{{asset('assets/js/lightbox.js')}}"></script>
+    <script src="{{asset('assets/js/isotope.js')}}"></script>
 
     <!-- Global Init -->
-    <script src="assets/js/custom.js"></script>
+    <script src="{{asset('assets/js/custom.js')}}"></script>
     <script>
         $(function() {
             var selectedClass = "";

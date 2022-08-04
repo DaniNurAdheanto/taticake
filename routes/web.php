@@ -25,9 +25,9 @@ Route::post("/uploadfood", [AdminController::class, "upload"]);
 Route::get("/deleteusers/{id}", [AdminController::class, "deleteusers"]);
 Route::get("/updateview/{id}", [AdminController::class, "updateview"]);
 Route::post("/update/{id}", [AdminController::class, "update"]);
-Route::post("/reservation", [AdminController::class, "reservation"]);
+Route::post("/konfirmasipayment", [AdminController::class, "konfirmasipayment"]);
 Route::post("/uploadchef", [AdminController::class, "uploadchef"]);
-Route::get("/viewreservation", [AdminController::class, "viewreservation"]);
+Route::get("/viewkonfirmasipayment", [AdminController::class, "viewkonfirmasipayment"]);
 Route::get("/viewchef", [AdminController::class, "viewchef"]);
 Route::get("/updatechef/{id}", [AdminController::class, "updatechef"]);
 Route::post("/updatefoodchef/{id}", [AdminController::class, "updatefoodchef"]);
@@ -46,7 +46,8 @@ Route::get("/waitingforpayment/{id}", [AdminController::class, "waitingforpaymen
 Route::get("/inproses/{id}", [AdminController::class, "inproses"]);
 Route::get("/delivery/{id}", [AdminController::class, "delivery"]);
 Route::get("/done/{id}", [AdminController::class, "done"]);
-Route::get("/deletereservation/{id}", [AdminController::class, "deletereservation"]);
+Route::get("/deletekonfirmasipayment/{id}", [AdminController::class, "deletekonfirmasipayment"]);
+Route::get("/deleteorders/{id}", [AdminController::class, "deleteorders"]);
 Route::get("/redirects", [HomeController::class, "redirects"]);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
