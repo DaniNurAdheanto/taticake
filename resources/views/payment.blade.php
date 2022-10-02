@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <!-- <base href="/public"> -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -11,13 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <title>Payment</title>
-    <!--
-    
-TemplateMo 558 Klassy Cafe
 
-https://templatemo.com/tm-558-klassy-cafe
-
--->
     <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.min.css')}}">
 
