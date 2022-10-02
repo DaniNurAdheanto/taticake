@@ -22,7 +22,7 @@
                             <h4 class='title'>{{$data->title}}</h4>
                             <p style="color: black;" class='description'>{{$data->description}}</p>
                             <div class="price">
-                                <p style="font-size: 20 ;"><b>{{$data->Price}} K</b></p>
+                                <p style="font-size: 20px ;"><b>{{$data->Price}} K</b></p>
                             </div>
                             <br>
                             <input type="number" name="quantity" min="1" value="1" style="width: 70px;">

@@ -27,40 +27,56 @@
         <div class="container-scroller">
             @include("admin.navbar")
 
-            <div style="position: relative; top: 60px; margin:0 auto;">
-                <h1 style="color :aliceblue; text-align: center;">Infomasi Pengguna</h1>
+            <div style="position: relative; width: 800px; top: 60px; margin:0 auto;">
+                <h1 style="color :black; text-align: center;">Infomasi Data Pengguna</h1>
+                <br>
 
-                @if(session()->has('message1'))
-                <div class="alert alert-danger">
-                    {{session()->get('message1')}}
+                <div class="col-lg-12 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 style="text-align: center;" class="card-title">Data Pengguna</h4>
+
+                            @if(session()->has('message1'))
+                            <div class="alert alert-danger">
+                                {{session()->get('message1')}}
+                            </div>
+                            @endif
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr align=" center">
+                                            <th style="padding: 20px; color :white;">No </th>
+                                            <th style="padding: 20px; color :white;">Nama </th>
+                                            <th style="padding: 20px; color :white;">Email</th>
+                                            <th style="padding: 20px; color :white;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            @foreach($data as $data)
+                                        <tr style="color :white;" align=" center">
+                                            <td>{{$loop->iteration}}</td>
+                                            <td>{{$data->name}}</td>
+                                            <td>{{$data->email}}</td>
+                                            @if($data->usertype=="0")
+                                            <td><a href="{{url('/deleteusers', $data->id)}}" onclick="return confirm('Yakin User DiHapus ?')">Delete</a></td>
+                                            @else
+                                            <td><a>Not Allowed</a></td>
+                                            @endif
+                                        </tr>
+                                        @endforeach
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                @endif
-
-                <table class="table" style="color :white;">
-                    <tr>
-                        <th style="padding: 50px;">No </th>
-                        <th style="padding: 50px;">Nama </th>
-                        <th style="padding: 50px;">Email</th>
-                        <th style="padding: 50px;">Action</th>
-                    </tr>
-
-                    @foreach($data as $data)
-                    <tr align="center">
-                        <td>{{$loop->iteration}}</td>
-                        <td>{{$data->name}}</td>
-                        <td>{{$data->email}}</td>
-                        @if($data->usertype=="0")
-                        <td><a href="{{url('/deleteusers', $data->id)}}" onclick="return confirm('Yakin User DiHapus ?')">Delete</a></td>
-                        @else
-                        <td><a>Not Allowed</a></td>
-                        @endif
-                    </tr>
-                    @endforeach
-                </table>
             </div>
-        </div>
 
-        @include("admin.adminscript")
+            @include("admin.adminscript")
     </body>
 
     </html>

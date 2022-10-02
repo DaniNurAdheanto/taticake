@@ -22,7 +22,7 @@
                     <span class="menu-icon">
                         <i class="material-icons">account_circle</i>
                     </span>
-                    <span class=" menu-title">Dasboard</span>
+                    <span class=" menu-title">Dashboard</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
@@ -30,7 +30,7 @@
                     <span class="menu-icon">
                         <i class="material-icons">account_circle</i>
                     </span>
-                    <span " class=" menu-title">Pengguna</span>
+                    <span class=" menu-title">Pengguna</span>
                 </a>
             </li>
             <li class="nav-item menu-items">
@@ -41,14 +41,14 @@
                     <span class="menu-title">Menu</span>
                 </a>
             </li>
-            <li class="nav-item menu-items">
+            <!-- <li class="nav-item menu-items">
                 <a class="nav-link" href="{{url('/viewchef')}}">
                     <span class="menu-icon">
                         <i class="material-icons">people</i>
                     </span>
                     <span class="menu-title">Pembuat</span>
                 </a>
-            </li>
+            </li> -->
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{url('/viewkonfirmasipayment')}}">
                     <span class="menu-icon">
@@ -57,6 +57,7 @@
                     <span class="menu-title">Pembayaran</span>
                 </a>
             </li>
+
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{url('/orders')}}">
                     <span class="menu-icon">
@@ -65,6 +66,7 @@
                     <span class="menu-title">Pesanan</span>
                 </a>
             </li>
+
             <li class="nav-item menu-items">
                 <a class="nav-link" href="{{url('/statusorders')}}">
                     <span class="menu-icon">

@@ -18,7 +18,7 @@
     <div class="container-scroller">
         @include("admin.navbar")
         <div style="position: relative; margin:0 auto; padding: 30px;">
-            <H1 align="center">Selamat Datang Di Halaman Admin</H1>
+            <H1 style="color:black ;" align="center">Selamat Datang Di Halaman Admin</H1>
             <br>
             <div class="row">
                 <div class="col-xl-3 col-sm-6 grid-margin stretch-card">

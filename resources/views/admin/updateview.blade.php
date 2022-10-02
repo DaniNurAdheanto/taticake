@@ -18,45 +18,49 @@
         @include("admin.navbar")
 
 
-        <div style="position: relative; top: 60px; right : -150px">
+        <div style="position: relative; top: 30px; margin: 0 auto;">
             <form action="{{url('/update',$data->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
 
-                @if(session()->has('message'))
-                <div class="alert alert-success">
-                    {{session()->get('message')}}
-                </div>
-                @endif
 
-                <h1>Update Menu</h1>
-                <div>
-                    <label style="padding: 15px;">Nama Menu</label>
-                    <input style="color:black;" type="text" name="title" value="{{$data->title}}" required>
+
+                <h1 align="center" style="color: black;">Update Menu</h1>
+
+                <div style=" padding :20 px;margin: 0 auto; width: 800px;" class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{session()->get('message')}}
+                            </div>
+                            @endif
+                            <div class="form-group">
+                                <label>Nama Menu</label>
+                                <input style="color :white;" type="text" name="title" class="form-control form-control-lg" name="title" value="{{$data->title}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input style="color :white;" type="num" name="Price" class="form-control" name="Price" value="{{$data->Price}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <input style="color :white;" type="text" name="description" class="form-control form-control-sm" name="description" value="{{$data->description}}" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gambar Lama</label>
+                                <img height="100" width="100" src="{{asset('/storage/menu/'.$data->image)}}" alt="">
+                            </div>
+                            <div class="form-group">
+                                <label>Gambar Baru</label>
+                                <input type="file" name="image" required>
+                            </div>
+                            <div>
+                                <input style="color: blue; padding: 10px;" type="Submit" value="Save">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-                <div>
-                    <label style="padding: 15px;">Harga</label>
-                    <input style="color:black;" type="num" name="Price" value="{{$data->Price}}" required>
-                </div>
-
-                <div>
-                    <label style="padding: 15px;">Deskripsi</label>
-                    <input style="color:black;" type="text" name="description" value="{{$data->description}}" required>
-                </div>
-
-                <div>
-                    <label style="padding: 15px;">Gambar Lama</label>
-                    <img height="100" width="100" src="{{asset('/storage/menu/'.$data->image)}}" alt="">
-                </div>
-
-                <div>
-                    <label style="padding: 15px;">Gambar Baru</label>
-                    <input type="file" name="image" required>
-                </div>
-
-                <div>
-                    <input style="color: blue;" type="Submit" value="Save">
-                </div>
 
             </form>
 

@@ -176,7 +176,7 @@
                             <h6>Tentang</h6>
                             <h2>Tati Cake </h2>
                         </div>
-                        <p style="font-size :15px; text-align: justify ">Tati Cake Yang Merupakan Sebuah Usaha Rumahan Yang Melayani Pesanan Dan Pembelian Berbagai Macam Kue Bolu Dan Kue Kering Lebaran Dengan Menggunakan Sistem Pre Order Untuk Metode Pembelian. Pada Saat Ini Toko Tati Cake Masih Mengadaptasi Startegi Pemasaran (WOM) Word Of Mouth Atau Strategi Pemasaran Mulut Ke Mulut.</p>
+                        <p style="font-size :15px; text-align: justify ">Tati Cake Yang Merupakan Sebuah Usaha Rumahan Yang Melayani Pesanan Dan Pembelian Berbagai Macam Kue Bolu Dan Kue Kering Lebaran Dengan Menggunakan Sistem Pre Order Untuk Metode Pembelian. </p>
                         <div class="row">
                             <div class="col-4">
                                 <img src="/assets/images/about1.png" alt="">

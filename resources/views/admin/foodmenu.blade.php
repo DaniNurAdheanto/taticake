@@ -14,71 +14,94 @@
 <body>
     <div class="container-scroller">
         @include("admin.navbar")
-        <!-- <div style="position: relative; top: 30px; margin:0 auto;"> -->
-        <form action="{{url('/uploadfood')}}" method="post" enctype="multipart/form-data">
-            @csrf
+        <div style="position: relative; width: 800px; top: 30px; margin:0 auto;">
+            <form action="{{url('/uploadfood')}}" method="post" enctype="multipart/form-data">
+                @csrf
 
-            @if(session()->has('message'))
-            <div class="alert alert-success">
-                {{session()->get('message')}}
-            </div>
-            @endif
+                <h1 align="center" style="color :black;">Upload Menu</h1>
 
-            @if(session()->has('message1'))
-            <div class="alert alert-danger">
-                {{session()->get('message1')}}
+                <div style=" padding :20 px;margin: auto; width: 800px;" class="col-md-6 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label>Nama Menu</label>
+                                <input style="color :white;" type="text" name="title" class="form-control form-control-lg" placeholder="Nama Menu*" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input style="color :white;" type="num" name="Price" class="form-control" name="Price" placeholder=" Harga*" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Gambar</label>
+                                <input style="color :white;" type="file" name="image" class="form-control form-control-sm" name="image" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Deskripsi</label>
+                                <input style="color :white;" type="text" name="description" class="form-control form-control-sm" name="description" placeholder="Deskripsi*" required>
+                            </div>
+                            <div>
+                                <input style="color: blue; padding: 10px;" type="Submit" value="Save">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <br>
+            <div style=" width: auto; margin: 0 auto;" class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 style="text-align: center; " class="card-title">Data Menu</h4>
+
+                        @if(session()->has('message'))
+                        <div class="alert alert-success">
+                            {{session()->get('message')}}
+                        </div>
+                        @endif
+
+                        @if(session()->has('message1'))
+                        <div class="alert alert-danger">
+                            {{session()->get('message1')}}
+                        </div>
+                        @endif
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr style="color :white;" align=" center">
+                                        <th>No </th>
+                                        <th>Nama Menu </th>
+                                        <th>Harga</th>
+                                        <th>Deskripsi</th>
+                                        <th>Gambar</th>
+                                        <th>Hapus</th>
+                                        <th>Ubah</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        @foreach($data as $data)
+                                    <tr style="color :white;" align="center">
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$data->title}}</td>
+                                        <td>{{$data->Price}} K</td>
+                                        <td>{{$data->description}}</td>
+                                        <td><img height="50" width="50" src="{{asset('/storage/menu/'.$data->image)}}"></td>
+                                        <td><a href="{{url('/deletemenu',$data->id)}}" onclick="return confirm('Yakin Barang DiHapus')">Hapus</a></td>
+                                        <td><a href="{{url('/updateview',$data->id)}}">Ubah</a></td>
+                                    </tr>
+                                    @endforeach
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            @endif
 
 
-            <h1>Upload Menu</h1>
-            <div>
-                <label style="padding: 10px;">Nama Menu</label>
-                <input style="color:black;" type="text" name="title" placeholder="Nama Menu*" required>
-            </div>
-            <div>
-                <label style="padding: 10px;">Harga</label>
-                <input style="color:black;" type="num" name="Price" placeholder=" Harga*" required>
-            </div>
-            <div>
-                <label style="padding: 10px;">Gambar</label>
-                <input type="file" name="image" required>
-            </div>
-            <div>
-                <label style="padding: 10px;">Deskripsi</label>
-                <input style="color:black;" type="text" name="description" placeholder="Deskripsi*" required>
-            </div>
-            <div>
-                <input style="color: blue; padding: 10px;" type="Submit" value="Save">
-            </div>
-        </form>
-
-        <div>
-            <table class="table" style="color:white; width: auto; margin:0 auto;">
-                <tr>
-                    <th>No</th>
-                    <th style="padding: 30px;">Nama Menu</th>
-                    <th style="padding: 30px;">Harga</th>
-                    <th style="padding: 30px;">Deskripsi</th>
-                    <th style="padding: 30px;">Gambar</th>
-                    <th style="padding: 30px;">Hapus</th>
-                    <th style="padding: 30px;">Ubah</th>
-                </tr>
-
-                @foreach($data as $data)
-                <tr align="center">
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$data->title}}</td>
-                    <td>{{$data->Price}} K</td>
-                    <td>{{$data->description}}</td>
-                    <td><img height="50" width="50" src="{{asset('/storage/menu/'.$data->image)}}"></td>
-                    <td><a href="{{url('/deletemenu',$data->id)}}" onclick="return confirm('Yakin Barang DiHapus')">Hapus</a></td>
-                    <td><a href="{{url('/updateview',$data->id)}}">Ubah</a></td>
-                </tr>
-                @endforeach
-            </table>
         </div>
-    </div>
 
     </div>
 

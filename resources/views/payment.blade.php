@@ -82,7 +82,7 @@
             <br>
             <div align="center" class="alert alert-success" style="width: auto; position: center; margin:0 auto;" role="alert">
                 <h1 class="alert-heading" style="font-size: 20px;"><b> Pesanan Akan Di Proses!</b> </h1>
-                <p>Segerakan Lakukan Pembayaran Melalui <strong>Bank Permata = 2351727 AN. Dani </strong> dengan Jumlah <strong>Rp.{{$totalprice + $ongkir}}.{{$kodeunik}}</strong></p>
+                <p>Segerakan Lakukan Pembayaran Melalui <strong>Bank Permata = 2351727 AN. Dani </strong> Batas Pembayaran 1 X 24 Jam dengan Jumlah <strong>Rp.{{$totalprice + $ongkir}}.{{$kodeunik}}. </strong></p>
                 <hr>
                 <p class="mb-0"> Setelah Transfer Konfirmasi Ke Whatsapp <strong> No 08999231334 </strong> Atau Klik di sini
                     <a href="https://api.whatsapp.com/send?phone=6285156061958"> <button><i class="fa fa-whatsapp"></i></button></a>

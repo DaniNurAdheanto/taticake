@@ -111,7 +111,7 @@ class HomeController extends Controller
             $data->address = $request->address;
             $data->status = 'Menunggu Pembayaran';
             $data->user_id = Auth::user()->id;
-            Alert::success('Barang Berhasil DiCheckout', 'Silakan Selesaikan Pembayaran Di Halaman Pesanan');
+            Alert::success('Barang Berhasil DiCheckout', 'Silakan Selesaikan Pembayaran 1 X 24 Jam Di Halaman Pesanan');
             $data->save();
         }
         return redirect()->back();

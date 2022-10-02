@@ -17,7 +17,7 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('email')->nullable();
-            $table->string('phone')->nullable();
+            $table->integer('phone')->nullable();
             $table->string('address')->nullable();
             $table->string('date')->nullable();
             $table->string('image')->nullable();

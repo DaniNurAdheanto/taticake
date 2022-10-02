@@ -23,7 +23,7 @@
                             </div>
                             <div class='info'>
                                 <h1 class='title'>{{$data->title}}</h1>
-                                <p class='description'>{{$data->description}}</p>
+                                <p class='description'>Kue Lebaran</p>
                                 <div class="main-text-button">
                                 </div>
                             </div>

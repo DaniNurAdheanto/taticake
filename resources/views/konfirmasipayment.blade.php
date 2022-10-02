@@ -8,20 +8,20 @@
                         <h6>KONTAK</h6>
                         <h2>Apabila Ada Petanyaan Silakan Kontak Kami</h2>
                     </div>
-                    <p style="font-size: 15px; text-align: justify;">Berikut Ini Adalah Kontak Kami. Apabila ini Bertanya Tentang Produk / Pesanan Ataupun Konfirmasi Pembayaran Silakan Hubungi Di Nomer Telpon Atau Email Berikut ini !</p>
+                    <p style="font-size: 15px; text-align: justify;">Berikut Ini Adalah Kontak Kami. Apabila ini Bertanya Tentang Produk / Pesanan Ataupun Konfirmasi Pembayaran Silakan Hubungi Di Nomer Telpon Atau Email Berikut ini! <br> <br> <b>Perhatian untuk mengisi form konfirmasi pembayaran NAMA, ALAMAT, dan NOMER TELPON harus sama dengan form pengiriman. </b></p>
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="phone">
                                 <i class="fa fa-phone"></i>
                                 <h4>Nomer Telpon</h4>
-                                <span><a>0851-5606-1958</a><br><a>0851-5606-1958</a></span>
+                                <span><a>0851-5606-1958</a></span>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="message">
                                 <i class="fa fa-envelope"></i>
                                 <h4>Email</h4>
-                                <span><a>taticake@gmail.com</a><br><a>admintaticake@gmail.com</a></span>
+                                <span><a>taticakebekasi@gmail.com</a></span>
                             </div>
                         </div>
                     </div>
